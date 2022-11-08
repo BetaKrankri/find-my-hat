@@ -38,10 +38,13 @@ class Field {
                 }
                 hatCoord[coord] = newCoord;
             }
-            newField[hatCoord.x][hatCoord.y] = hat;
+            // console.log(hatCoord);
+            // console.log(newField);
+            newField[hatCoord.y][hatCoord.x] = hat;
         }
         // Placing player 
         {
+
             newField[0][0] = pathCharacter;
         }
         return newField;
@@ -57,8 +60,12 @@ class Field {
 
 }
 
-const myField = new Field(Field.generateField(10, 10, .2));
+// const myField = new Field(Field.generateField(10, 10, .2));
 
-myField.print();
+// myField.print();
 
+
+
+
+////////////
 module.exports = Field;
