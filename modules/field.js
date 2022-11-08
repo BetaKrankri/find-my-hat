@@ -7,7 +7,7 @@ class Field {
     constructor(field) {
         this._field = field;
         this.playerPos = { x: 0, y: 0 };
-    }
+    };
     static generateField(height, width, percentage) {
         let newField = [];
 
@@ -45,12 +45,20 @@ class Field {
             newField[0][0] = pathCharacter;
         }
         return newField;
-    }
+    };
+    print() {
+        let canvas = "";
+        this._field.forEach(row => {
+            canvas += '\n' + row.join('');
+        });
+        console.log(canvas);
+        return canvas;
+    };
 
 }
 
 const myField = new Field(Field.generateField(10, 10, .2));
 
-console.log(myField._field);
+myField.print();
 
 module.exports = Field;
