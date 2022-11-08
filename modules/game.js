@@ -2,7 +2,7 @@ const Field = require('./field');
 const prompt = require ('prompt-sync')({sigint: true});
 
 
-const game = {
+let game = {
     world: null,
     init: function () {
         let rdmHeight = Math.floor(Math.random() * 7) + 3;
@@ -32,4 +32,4 @@ const game = {
     }
 }
 
-game.init();
+module.exports = game;

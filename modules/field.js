@@ -8,14 +8,11 @@ class Field {
         this._field = field;
         this.playerPos = { x: 0, y: 0 };
     };
-
     static generateField(height, width, percentage) {
         let newField = [];
-
         // Placing holes and fields
         {
             let row = [];
-
             for (let i = 0; i < height; i++) {
                 for (let j = row.length; j < width; j++) {
                     if ((Math.random().toFixed(2) * 1 > percentage)) {
@@ -31,7 +28,6 @@ class Field {
         // placing hat
         {
             let hatCoord = { x: width, y: height };
-
             for (let coord in hatCoord) {
                 let newCoord = 0;
                 while (newCoord === 0) {
@@ -39,13 +35,10 @@ class Field {
                 }
                 hatCoord[coord] = newCoord;
             }
-            // console.log(hatCoord);
-            // console.log(newField);
             newField[hatCoord.y][hatCoord.x] = hat;
         }
         // Placing player 
         {
-
             newField[0][0] = pathCharacter;
         }
         return newField;
@@ -100,15 +93,7 @@ class Field {
             }
         }
     };
-
 }
-
-// const myField = new Field(Field.generateField(10, 10, .2));
-
-// myField.print();
-
-
-
 
 ////////////
 module.exports = Field;
