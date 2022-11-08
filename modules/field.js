@@ -8,7 +8,7 @@ class Field {
         this._field = field;
         this.playerPos = { x: 0, y: 0 };
     };
-    
+
     static generateField(height, width, percentage) {
         let newField = [];
 
@@ -57,6 +57,48 @@ class Field {
         });
         console.log(canvas);
         return canvas;
+    };
+    movePlayer(move) {
+        // change player coordinates
+        switch (move) {
+            case 'W': {
+                this.playerPos.y -= 1;
+                break;
+            }
+            case 'S': {
+                this.playerPos.y += 1;
+                break;
+            }
+            case 'A': {
+                this.playerPos.x -= 1;
+                break;
+            }
+            case 'D': {
+                this.playerPos.x += 1;
+                break;
+            }
+        }
+        // stop game cases:
+        // Case 1: Out of the world border
+        if (this.playerPos.y < 0 || this.playerPos.x < 0 || this.playerPos.y >= this._field.length || this.playerPos.x >= this._field[0].length) {
+            throw new Error('Out of bound instruction');
+        }
+        switch (this._field[this.playerPos.y][this.playerPos.x]) {
+            // if not stoping just change the path
+            case fieldCharacter: {
+                this._field[this.playerPos.y][this.playerPos.x] = pathCharacter;
+                this.print();
+                break;
+            }
+            //Case 2: Falling in a hole
+            case hole: {
+                throw new Error('Sorry, you fell down on hole');
+            }
+            //Case 3: Findind the hat
+            case hat: {
+                throw new Error('Congrats! you found your hat');
+            }
+        }
     };
 
 }

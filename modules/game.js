@@ -14,10 +14,22 @@ const game = {
         this.ask4Move();
     },
     ask4Move: function () {
-        prompt('asking', 'Quike');
-    },
-    
-
+        try {
+            while (true) {
+                let isMoveValid = false;
+                let nextMove = '';
+                do {
+                    nextMove = prompt('Which way? (WASD): ');
+                    nextMove = nextMove.trim().toUpperCase();
+                    isMoveValid = /^[WASD]$/.test(nextMove);
+                } while (!isMoveValid)
+                this.world.movePlayer(nextMove);
+            }
+        } catch (error) {
+            console.log(error.message);
+            return;
+        }
+    }
 }
 
 game.init();
