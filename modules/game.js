@@ -1,4 +1,6 @@
 const Field = require('./field');
+const prompt = require ('prompt-sync')({sigint: true});
+
 
 const game = {
     world: null,
@@ -12,8 +14,9 @@ const game = {
         this.ask4Move();
     },
     ask4Move: function () {
-        console.log('asking');
+        prompt('asking', 'Quike');
     },
+    
 
 }
 

@@ -8,6 +8,7 @@ class Field {
         this._field = field;
         this.playerPos = { x: 0, y: 0 };
     };
+    
     static generateField(height, width, percentage) {
         let newField = [];
 
